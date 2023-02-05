@@ -5,21 +5,17 @@ import {
 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { COLORS } from 'config/COLORS'
-import {
-  HomeScreen,
-  NotificationScreen,
-  ProfileScreen,
-  TicketsScreen
-} from 'screens/index'
+import { NotificationScreen, ProfileScreen, TicketsScreen } from 'screens/index'
 import { Route } from 'types/IBRoute'
 import { NavigationStyles } from './NavigationStyles'
+import { HomeStack } from './routes'
 
 const Tab = createBottomTabNavigator()
 
 export const routes: Route[] = [
   {
-    name: 'Home',
-    component: HomeScreen,
+    name: 'HomeScreen',
+    component: HomeStack,
     options: {
       tabBarIcon: ({ focused }) => (
         <FontAwesome5
