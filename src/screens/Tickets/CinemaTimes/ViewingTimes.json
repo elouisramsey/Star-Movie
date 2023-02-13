@@ -1,0 +1,132 @@
+{
+    "paragon": {
+        "main": [
+            {
+                "time": "8: 30 AM",
+                "width": "50%"
+            },
+            {
+                "time": "9: 30 AM",
+                "width": "20%"
+            },
+            {
+                "time": "10: 00 AM",
+                "width": "85%"
+            },
+            {
+                "time": "12: 30 PM",
+                "width": "10%"
+            },
+            {
+                "time": "13: 45 PM",
+                "width": "40%"
+            },
+            {
+                "time": "15: 00 PM",
+                "width": "20%"
+            }
+        ],
+        "imax": [
+            {
+                "time": "8: 30 AM",
+                "width": "15%"
+            },
+            {
+                "time": "9: 30 AM",
+                "width": "30%"
+            },
+            {
+                "time": "10: 00 AM",
+                "width": "50%"
+            },
+            {
+                "time": "12: 30 PM",
+                "width": "50%"
+            },
+            {
+                "time": "13: 45 PM",
+                "width": "20%"
+            },
+            {
+                "time": "15: 00 PM",
+                "width": "10%"
+            }
+        ]
+    },
+    "genesis": {
+        "main": [
+            {
+                "time": "8: 30 AM",
+                "width": "50%"
+            },
+            {
+                "time": "9: 30 AM",
+                "width": "20%"
+            },
+            {
+                "time": "10: 00 AM",
+                "width": "85%"
+            },
+            {
+                "time": "12: 30 PM",
+                "width": "10%"
+            },
+            {
+                "time": "13: 45 PM",
+                "width": "40%"
+            }
+        ],
+        "imax": [
+            {
+                "time": "8: 30 AM",
+                "width": "15%"
+            },
+            {
+                "time": "9: 30 AM",
+                "width": "30%"
+            },
+            {
+                "time": "10: 00 AM",
+                "width": "50%"
+            },
+            {
+                "time": "12: 30 PM",
+                "width": "50%"
+            },
+            {
+                "time": "13: 45 PM",
+                "width": "20%"
+            }
+        ]
+    },
+    "cinepolis": {
+        "main": [
+            {
+                "time": "8: 30 AM",
+                "width": "50%"
+            },
+            {
+                "time": "9: 30 AM",
+                "width": "20%"
+            },
+            {
+                "time": "10: 00 AM",
+                "width": "85%"
+            }
+        ],
+        "imax": [
+            {
+                "time": "8: 30 AM",
+                "width": "15%"
+            },
+            {
+                "time": "9: 30 AM",
+                "width": "30%"
+            },
+            {
+                "time": "10: 00 AM",
+                "width": "50%"
+            }
+        ]
+    }
+}

@@ -1,3 +1,10 @@
+import {
+  COLORS,
+  fontPixel,
+  heightPixel,
+  pixelSizeHorizontal,
+  pixelSizeVertical
+} from 'config/config'
 import React from 'react'
 import {
   ActivityIndicator,
@@ -5,13 +12,6 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native'
-import {
-  COLORS,
-  fontPixel,
-  heightPixel,
-  pixelSizeHorizontal,
-  pixelSizeVertical
-} from 'src/config'
 import { IBProps } from 'src/types/IBType'
 
 const Button = (props: IBProps) => {

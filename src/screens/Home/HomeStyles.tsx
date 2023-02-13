@@ -26,7 +26,7 @@ export const HomeStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: pixelSizeVertical(10),
-    marginBottom: pixelSizeVertical(25)
+    marginBottom: pixelSizeVertical(15)
   },
   header: {
     fontSize: fontPixel(24),

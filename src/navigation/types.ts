@@ -4,4 +4,5 @@ export type RootStackParamList = {
   Tickets: undefined
   Notification: undefined
   MovieDetails: any
+  SeatSelection: undefined
 }

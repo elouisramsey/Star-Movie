@@ -3,7 +3,7 @@ import { RootStackParamList } from 'navigation/types'
 import React from 'react'
 import { View } from 'react-native'
 import { HomeStyles } from './HomeStyles'
-import MovieList from './MovieList'
+import HomeTabView from './HomeTabView'
 import SearchContainer from './SearchContainer'
 
 type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>
@@ -14,7 +14,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   return (
     <View style={HomeStyles.ListContainer}>
       <SearchContainer />
-      <MovieList navigation={navigation} />
+      <HomeTabView navigation={navigation} />
     </View>
   )
 }

@@ -1,5 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { COLORS } from 'config/COLORS'
+import MovieDetails from 'screens/MovieDetails'
+import SeatSelection from 'screens/Tickets/Seats/SeatSelection'
 import { HomeScreen } from 'screens/index'
 import { RootStackParamList } from './types'
 
@@ -18,6 +20,20 @@ export const HomeStack = () => {
       <HomeStackNavigation.Screen
         name='Home'
         component={HomeScreen}
+        options={{
+          gestureEnabled: true
+        }}
+      />
+      <HomeStackNavigation.Screen
+        name='MovieDetails'
+        component={MovieDetails}
+        options={{
+          gestureEnabled: true
+        }}
+      />
+      <HomeStackNavigation.Screen
+        name='SeatSelection'
+        component={SeatSelection}
         options={{
           gestureEnabled: true
         }}

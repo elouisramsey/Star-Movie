@@ -1,9 +1,6 @@
-import { ErrorDisplay } from 'components/Error/Error'
-import LoadingIndicator from 'components/Loader/Loading'
+import { useReusableQuery } from 'config/api/useReusableQuery'
 import React from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
-import { useQuery } from 'react-query'
-import { ApiError } from 'types'
 import { IBMovie } from 'types/IBMovie'
 import MoviePoster from './MoviePoster'
 import MovieService from './services'
@@ -13,10 +10,6 @@ type Props = {
 }
 
 const MovieList = ({ navigation }: Props) => {
-  const { isLoading, error, data } = useQuery<any, ApiError>(['movies'], () =>
-    MovieService.getAllMovies()
-  )
-
   const openMovieDetails = React.useCallback(
     (movie: any) => {
       navigation.navigate('MovieDetails', {
@@ -33,13 +26,17 @@ const MovieList = ({ navigation }: Props) => {
     [openMovieDetails]
   )
 
-  if (isLoading) return <LoadingIndicator loading={isLoading} />
+  const data = useReusableQuery({
+    fetcher: () => MovieService.getAllMovies(),
+    queryKey: ['movies']
+  })
 
-  if (error) return <ErrorDisplay errorMessage={error?.message} />
   return (
     <FlatList
       horizontal={false}
-      columnWrapperStyle={{ justifyContent: 'space-between' }}
+      columnWrapperStyle={{
+        justifyContent: 'space-between'
+      }}
       data={data?.results}
       renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}

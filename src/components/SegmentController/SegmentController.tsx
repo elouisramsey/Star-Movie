@@ -21,7 +21,7 @@ const SegmentController = ({
   onChange,
   currentIndex = 0,
   segmentedControlBackgroundColor = 'transparent',
-  paddingVertical = 12,
+  paddingVertical = pixelSizeVertical(12),
   activeSegmentBackgroundColor = COLORS.inactive,
   textColor = '#333',
   activeTextColor = COLORS.white
@@ -51,7 +51,10 @@ const SegmentController = ({
         styles.segmentedControlWrapper,
         {
           paddingVertical: pixelSizeVertical(paddingVertical),
-          backgroundColor: segmentedControlBackgroundColor
+          backgroundColor: segmentedControlBackgroundColor,
+
+          marginBottom: pixelSizeVertical(25),
+          overflow: 'hidden'
         }
       ]}
     >

@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { COLORS } from 'config/COLORS'
+import { TicketProvider } from 'context/MovieContext'
 import * as Font from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
@@ -64,7 +65,9 @@ export default function App() {
           onLayout={onLayoutRootView}
           style={{ flex: 1, backgroundColor: COLORS.primary }}
         >
-          <BottomTab />
+          <TicketProvider>
+            <BottomTab />
+          </TicketProvider>
         </View>
         <StatusBar style='light' />
       </NavigationContainer>
