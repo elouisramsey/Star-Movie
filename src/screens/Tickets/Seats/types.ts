@@ -1,12 +1,12 @@
 export interface Seat {
   available: boolean
-  onPress: () => void
+  onPress?: () => void
   vip: boolean
   booked: boolean
   id: String
   selected: boolean
   opacity: number
-  amount: number
+  amount?: number
 }
 
 export interface ROW {

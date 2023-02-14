@@ -12,7 +12,13 @@ export const SingleSeat: React.FC<Seat> = ({
   opacity
 }) => {
   return (
-    <TouchableOpacity disabled={booked} onPress={onPress}>
+    <TouchableOpacity
+      disabled={booked}
+      onPress={onPress}
+      style={{
+        width: '33%'
+      }}
+    >
       <View
         style={[
           seatStyles.seat,

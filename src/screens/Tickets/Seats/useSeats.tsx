@@ -1,11 +1,11 @@
+import { useGeneralSeatState } from 'context/MovieContext'
 import React, { useCallback, useEffect, useState } from 'react'
 import { cinemaRows } from './FakeData'
 import { Seat } from './types'
 
-type Props = {}
-
-const useSeats = (props: Props) => {
+const useSeats = () => {
   const [selectedSeats, setSelectedSeats] = useState<any>([])
+  const [{ seats }] = useGeneralSeatState()
 
   const [rows, setRows] = React.useState('')
 
@@ -25,17 +25,17 @@ const useSeats = (props: Props) => {
     [selectedSeats]
   )
 
-  //   useEffect(() => {
-  //     const acc = [] as any[]
-  //     const row = items.filter((seat: any) => {
-  //       if (seat.selected) {
-  //         const row = acc.push(seat.id)
-  //         return row
-  //       }
-  //     })
-  //     setRows(acc.join(', '))
-  //     return () => {}
-  //   }, [selectedSeats])
+  useEffect(() => {
+    const acc = [] as any[]
+    const row = seats.filter((seat: any) => {
+      if (seat.selected) {
+        const row = acc.push(seat.id)
+        return row
+      }
+    })
+    setRows(acc.join(', '))
+    return () => {}
+  }, [selectedSeats])
 
   useEffect(() => {
     // @ts-ignore

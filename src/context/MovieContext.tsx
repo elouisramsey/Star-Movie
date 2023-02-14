@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useContext, useReducer } from 'react'
 import { cinemaRows, extrasData } from 'screens/Tickets/Seats/FakeData'
 import { Seat } from 'screens/Tickets/Seats/types'
 
@@ -117,4 +117,12 @@ export const TicketProvider: React.FC<TicketProviderProps> = ({ children }) => {
       {children}
     </TicketContext.Provider>
   )
+}
+
+export const useGeneralSeatState = () => {
+  const context = useContext(TicketContext)
+  if (context === undefined) {
+    throw new Error('useGeneralState must be used in a context provider')
+  }
+  return context
 }
