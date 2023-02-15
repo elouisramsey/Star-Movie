@@ -3,7 +3,7 @@ export interface Seat {
   onPress?: () => void
   vip: boolean
   booked: boolean
-  id: String
+  id: string
   selected: boolean
   opacity: number
   amount?: number

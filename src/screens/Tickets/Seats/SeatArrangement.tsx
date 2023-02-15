@@ -1,16 +1,15 @@
 import { useGeneralSeatState } from 'context/MovieContext'
-import React, { memo } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import { SingleSeat } from './SingleSeat'
 import { seatStyles } from './styles'
-import useSeats from './useSeats'
 
-type Props = {}
+type Props = {
+  toggleSeat: (val: any) => void
+}
 
-const AllSeats = memo((props: Props) => {
+const SeatArrangement = ({ toggleSeat }: Props) => {
   const [{ seats }] = useGeneralSeatState()
-  const { toggleSeat } = useSeats()
-
   return (
     <>
       <View style={seatStyles.row}>
@@ -189,6 +188,6 @@ const AllSeats = memo((props: Props) => {
       </View>
     </>
   )
-})
+}
 
-export { AllSeats }
+export default SeatArrangement

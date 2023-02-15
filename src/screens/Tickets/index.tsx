@@ -3,7 +3,8 @@ import PickerComponent from 'components/Picker/Picker'
 import SegmentController from 'components/SegmentController/SegmentController'
 import TextDisplay from 'components/TextDisplay/TextDisplay'
 import TopNav from 'components/TopNav/TopNav'
-import React, { useState } from 'react'
+import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
+import React, { useEffect, useState } from 'react'
 import { ScrollView } from 'react-native'
 import { SharedProps } from 'screens/MovieDetails/types'
 import AvailableDays from './AvailableDays'
@@ -45,6 +46,12 @@ const TicketsScreen = ({
   const [selectedCinema, setSelectedCinema] = useState('paragon')
   const [selectedTime, setSelectedTime] = useState('')
   const [currentResolution, setCurrentResolution] = useState('')
+
+  const { dispatch } = useGeneralTicketState()
+
+  useEffect(() => {
+    dispatch({ type: 'addTheatre', payload: selectedCinema })
+  }, [selectedCinema])
 
   return (
     <>

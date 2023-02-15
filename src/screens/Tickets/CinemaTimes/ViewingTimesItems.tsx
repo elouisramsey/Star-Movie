@@ -1,5 +1,6 @@
 import TextDisplay from 'components/TextDisplay/TextDisplay'
 import { COLORS } from 'config/COLORS'
+import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { ITimes } from 'types/ITimes'
@@ -13,14 +14,15 @@ const ViewingTimesItems = ({
   selectedTime,
   resolution
 }: ITimes) => {
+  const { dispatch } = useGeneralTicketState()
   return (
     <TouchableOpacity
       onPress={() => {
         // @ts-ignore
         setCurrentResolution(resolution)
         setSelectedTime(item.time)
-        // dispatch(setTime(item.time))
-        // dispatch(setResolution('2d'))
+        dispatch({ type: 'addTime', payload: item.time })
+        dispatch({ type: 'addResolution', payload: resolution ?? '' })
       }}
       style={ticketStyles.timeHolder}
     >

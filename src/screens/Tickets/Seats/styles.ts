@@ -23,7 +23,8 @@ export const seatStyles = StyleSheet.create({
   time: {
     fontSize: fontPixel(12),
     opacity: 0.5,
-    marginTop: pixelSizeVertical(2)
+    marginTop: pixelSizeVertical(2),
+    textTransform: 'uppercase'
   },
   imgPoster: { height: heightPixel(32), width: widthPixel(32) },
   bottom: {

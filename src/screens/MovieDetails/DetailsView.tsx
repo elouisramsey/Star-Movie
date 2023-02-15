@@ -1,6 +1,7 @@
 import SegmentController from 'components/SegmentController/SegmentController'
 import TextDisplay from 'components/TextDisplay/TextDisplay'
-import React from 'react'
+import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
+import React, { useEffect } from 'react'
 import { Animated, ScrollView, View } from 'react-native'
 import { DetailsStyles } from './DetailsStyles'
 import MovieRuntimeInfo from './MovieRuntimeInfo'
@@ -27,6 +28,14 @@ const DetailsView = ({
   const bgImageUrl = `${baseImgUrl}/${size}${backdrop_path}`
 
   const previewOpacity = React.useRef(new Animated.Value(1)).current
+
+  const { dispatch } = useGeneralTicketState()
+
+  useEffect(() => {
+    dispatch({ type: 'addMoviePoster', payload: bgImageUrl })
+    dispatch({ type: 'addMovieName', payload: original_title })
+    dispatch({ type: 'addTime', payload: runtime + '' })
+  }, [bgImageUrl])
 
   return (
     <ScrollView

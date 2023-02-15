@@ -1,17 +1,28 @@
 import Button from 'components/Button/Button'
 import TextDisplay from 'components/TextDisplay/TextDisplay'
+import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
 import React from 'react'
 import { View } from 'react-native'
 import { seatStyles } from './styles'
 
-type Props = {}
+type Props = {
+  navigation: any
+  rows: string
+}
 
-const MovieTicketBottom = (props: Props) => {
+const MovieTicketBottom = ({ navigation, rows }: Props) => {
+  const { dispatch } = useGeneralTicketState()
+
+  const goToExtras = () => {
+    dispatch({ type: 'addSelectedSeats', payload: rows })
+    navigation.navigate('Extra')
+  }
+
   return (
     <View style={seatStyles.bottom}>
       <View>
         <TextDisplay styles={seatStyles.selectedSeat}>
-          b3, b6 selected
+          {rows.length > 0 ? rows : 'Select seat'}
         </TextDisplay>
         <TextDisplay styles={seatStyles.amount}>$100.00</TextDisplay>
       </View>
@@ -19,10 +30,7 @@ const MovieTicketBottom = (props: Props) => {
         <Button
           // disabled={totalPrice === 0}
           title='Continue'
-          onPress={() => {
-            //   dispatch(setSelectedSeat(rows))
-            //   navigation.navigate('Extra')
-          }}
+          onPress={goToExtras}
         />
       </View>
     </View>

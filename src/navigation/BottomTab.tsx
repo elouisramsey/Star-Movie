@@ -5,7 +5,8 @@ import {
 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { COLORS } from 'config/COLORS'
-import { NotificationScreen, ProfileScreen, TicketsScreen } from 'screens/index'
+import Tickets from 'screens/PurchasedTickets/Tickets'
+import { NotificationScreen, ProfileScreen } from 'screens/index'
 import { Route } from 'types/IBRoute'
 import { NavigationStyles } from './NavigationStyles'
 import { HomeStack } from './routes'
@@ -32,7 +33,7 @@ export const routes: Route[] = [
   },
   {
     name: 'Tickets',
-    component: TicketsScreen,
+    component: Tickets,
     options: {
       tabBarIcon: ({ focused }) => (
         <MaterialCommunityIcons
