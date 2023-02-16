@@ -5,6 +5,9 @@ import { Seat } from 'screens/Tickets/Seats/types'
 type Extra = {
   id: string
   quantity: number
+  name: string
+  price: number
+  image: any
 }
 
 type State = {
@@ -100,10 +103,15 @@ function ticketReducer(state: State, action: Action): State {
   return state
 }
 
-export const TicketContext = createContext<[State, React.Dispatch<Action>]>([
-  initialState,
-  () => {}
-])
+type TicketContextValue = {
+  state: State
+  dispatch: React.Dispatch<Action>
+}
+
+export const TicketContext = createContext<TicketContextValue>({
+  state: initialState,
+  dispatch: () => {}
+})
 
 interface TicketProviderProps {
   children: React.ReactNode
@@ -113,7 +121,7 @@ export const TicketProvider: React.FC<TicketProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(ticketReducer, initialState)
 
   return (
-    <TicketContext.Provider value={[state, dispatch]}>
+    <TicketContext.Provider value={{ state, dispatch }}>
       {children}
     </TicketContext.Provider>
   )

@@ -1,5 +1,6 @@
 import Button from 'components/Button/Button'
 import TextDisplay from 'components/TextDisplay/TextDisplay'
+import { convertCurrency } from 'config/functions'
 import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
 import React from 'react'
 import { View } from 'react-native'
@@ -8,9 +9,10 @@ import { seatStyles } from './styles'
 type Props = {
   navigation: any
   rows: string
+  totalPrice: number
 }
 
-const MovieTicketBottom = ({ navigation, rows }: Props) => {
+const MovieTicketBottom = ({ navigation, rows, totalPrice }: Props) => {
   const { dispatch } = useGeneralTicketState()
 
   const goToExtras = () => {
@@ -24,11 +26,13 @@ const MovieTicketBottom = ({ navigation, rows }: Props) => {
         <TextDisplay styles={seatStyles.selectedSeat}>
           {rows.length > 0 ? rows : 'Select seat'}
         </TextDisplay>
-        <TextDisplay styles={seatStyles.amount}>$100.00</TextDisplay>
+        <TextDisplay styles={seatStyles.amount}>
+          {convertCurrency(totalPrice)}
+        </TextDisplay>
       </View>
       <View style={{ width: '45%' }}>
         <Button
-          // disabled={totalPrice === 0}
+          disabled={totalPrice === 0}
           title='Continue'
           onPress={goToExtras}
         />

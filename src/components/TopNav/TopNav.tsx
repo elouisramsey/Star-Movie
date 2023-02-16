@@ -5,7 +5,7 @@ import { TouchableOpacity, View } from 'react-native'
 import { styles } from './styles'
 
 type Props = {
-  onPress: () => void
+  onPress?: () => void
   goBack: () => void
   children: React.ReactNode | string
   share?: boolean

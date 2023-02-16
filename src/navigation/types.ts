@@ -5,4 +5,5 @@ export type RootStackParamList = {
   Notification: undefined
   MovieDetails: any
   SeatSelection: undefined
+  Extra: undefined
 }

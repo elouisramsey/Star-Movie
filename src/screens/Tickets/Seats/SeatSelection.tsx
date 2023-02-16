@@ -1,6 +1,8 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import TextDisplay from 'components/TextDisplay/TextDisplay'
+import { memoizedGetTotalPrice } from 'config/functions'
 import { useGeneralSeatState } from 'context/MovieContext'
+import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
 import { RootStackParamList } from 'navigation/types'
 import React, { useEffect, useState } from 'react'
 import { Image, View } from 'react-native'
@@ -19,9 +21,11 @@ type SeatSelectionScreenProps = NativeStackScreenProps<
 
 const SeatSelection = ({ navigation }: SeatSelectionScreenProps) => {
   const [selectedSeats, setSelectedSeats] = useState<any>([])
-  const [{ seats }] = useGeneralSeatState()
+  const { state: seats } = useGeneralSeatState()
+  const { dispatch } = useGeneralTicketState()
 
   const [rows, setRows] = React.useState('')
+  const totalPrice = memoizedGetTotalPrice(seats.seats)
 
   const toggleSeat = (seat: Seat) => {
     setSelectedSeats(
@@ -33,12 +37,11 @@ const SeatSelection = ({ navigation }: SeatSelectionScreenProps) => {
         return seatArr
       })
     )
-    //   dispatch(addTicket(seat))
   }
 
   useEffect(() => {
     const acc = [] as any[]
-    const row = seats.filter((seat: any) => {
+    seats.seats.filter((seat: any) => {
       if (seat.selected) {
         const row = acc.push(seat.id)
         return row
@@ -54,6 +57,11 @@ const SeatSelection = ({ navigation }: SeatSelectionScreenProps) => {
     return () => {}
   }, [])
 
+  useEffect(() => {
+    dispatch({ type: 'addSelectedSeats', payload: rows })
+    return () => {}
+  }, [rows])
+
   return (
     <View style={[DetailsStyles.container, seatStyles.container]}>
       <MovieInfo navigation={navigation} />
@@ -65,7 +73,11 @@ const SeatSelection = ({ navigation }: SeatSelectionScreenProps) => {
         <SeatArrangement toggleSeat={toggleSeat} />
       </View>
 
-      <MovieTicketBottom navigation={navigation} rows={rows} />
+      <MovieTicketBottom
+        navigation={navigation}
+        rows={rows}
+        totalPrice={totalPrice}
+      />
     </View>
   )
 }
