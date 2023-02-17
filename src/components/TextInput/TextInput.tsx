@@ -12,6 +12,7 @@ interface Props extends TextInputProps {
   labelStyle?: any
   containerStyle?: any
   value: any
+  icon?: any
 }
 
 const Input: React.FC<Props> = ({
@@ -22,6 +23,7 @@ const Input: React.FC<Props> = ({
   labelStyle,
   containerStyle,
   value,
+  icon,
   ...rest
 }) => {
   return (
@@ -38,6 +40,7 @@ const Input: React.FC<Props> = ({
           error && { borderColor: '#EE4B2B' }
         ]}
       >
+        {icon && <>{icon}</>}
         <TextInput
           style={InputStyles.input}
           placeholderTextColor={COLORS.grayed}

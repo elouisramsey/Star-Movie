@@ -7,4 +7,6 @@ export type RootStackParamList = {
   SeatSelection: undefined
   Extra: undefined
   Payment: undefined
+  Signup: undefined
+  Login: undefined
 }

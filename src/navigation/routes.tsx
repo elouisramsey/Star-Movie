@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { COLORS } from 'config/COLORS'
 import { SelectedMovieProvider } from 'context/SelectedMovie/TicketContext'
+import Signup from 'screens/Auth/Signup'
 import MovieDetails from 'screens/MovieDetails'
 import Payment from 'screens/Payment/Payment'
 import Extras from 'screens/Tickets/Extras/Extras'
@@ -52,6 +53,13 @@ export const HomeStack = () => {
         <HomeStackNavigation.Screen
           name='Payment'
           component={Payment}
+          options={{
+            gestureEnabled: true
+          }}
+        />
+        <HomeStackNavigation.Screen
+          name='Signup'
+          component={Signup}
           options={{
             gestureEnabled: true
           }}
