@@ -6,4 +6,5 @@ export type RootStackParamList = {
   MovieDetails: any
   SeatSelection: undefined
   Extra: undefined
+  Payment: undefined
 }

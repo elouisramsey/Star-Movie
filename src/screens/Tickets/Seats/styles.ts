@@ -80,5 +80,18 @@ export const seatStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: pixelSizeHorizontal(50)
+  },
+  cost: {
+    fontSize: fontPixel(12),
+    opacity: 0.5,
+    lineHeight: 20,
+    textTransform: 'uppercase'
+  },
+  numberofItems: {
+    fontSize: 14,
+    fontFamily: 'SF_Pro',
+    color: '#fff',
+    textTransform: 'uppercase',
+    opacity: 0.5
   }
 })

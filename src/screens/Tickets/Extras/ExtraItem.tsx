@@ -24,7 +24,7 @@ const ExtraItem = ({ item }: Props) => {
   const { name, price, quantity, image, id } = item
 
   const { dispatch } = useGeneralSeatState()
-  console.log(quantity)
+
   return (
     <View style={ExtraStyles.item}>
       <View style={ExtraStyles.items}>

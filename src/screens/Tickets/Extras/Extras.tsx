@@ -7,6 +7,8 @@ import { FlatList, View } from 'react-native'
 import { DetailsStyles } from 'screens/MovieDetails/DetailsStyles'
 import { seatStyles } from '../Seats/styles'
 import ExtraItem from './ExtraItem'
+import ExtraTotal from './ExtraTotal'
+import ExtrasBottom from './ExtrasBottom'
 
 type ExtraScreenProps = NativeStackScreenProps<RootStackParamList, 'Extra'>
 
@@ -19,7 +21,10 @@ const Extras = ({ navigation }: ExtraScreenProps) => {
         keyExtractor={(item) => item.id.toString()}
         data={state.extras}
         renderItem={({ item }) => <ExtraItem item={item} />}
+        ListFooterComponent={() => <ExtraTotal />}
       />
+
+      <ExtrasBottom navigation={navigation} />
     </View>
   )
 }
