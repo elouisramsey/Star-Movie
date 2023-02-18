@@ -9,7 +9,7 @@ import { AuthStyles } from './styles'
 
 type Props = {
   navigation?: any
-  navigateTopage: boolean
+  navigateTopage?: boolean
 }
 
 type LoginInfo = {
@@ -17,7 +17,7 @@ type LoginInfo = {
   password: string
 }
 
-const Login = ({ navigation, navigateTopage }: Props) => {
+const Login = ({ navigation, navigateTopage = false }: Props) => {
   const [loading, setLoading] = useState(false)
   //   const dispatch = useAppDispatch()
   const {

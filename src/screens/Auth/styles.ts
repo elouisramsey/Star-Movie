@@ -12,7 +12,6 @@ export const AuthStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: pixelSizeHorizontal(35),
-
     backgroundColor: COLORS.secondary
   },
   inputContainer: {

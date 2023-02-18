@@ -44,7 +44,7 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
           />
         </View>
       ) : (
-        <Login navigateTopage={false} />
+        <Login />
       )}
     </>
   )

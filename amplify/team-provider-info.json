@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-starmovie-dev-85458-authRole",
+      "UnauthRoleArn": "arn:aws:iam::097895025316:role/amplify-starmovie-dev-85458-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::097895025316:role/amplify-starmovie-dev-85458-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-starmovie-dev-85458-deployment",
+      "UnauthRoleName": "amplify-starmovie-dev-85458-unauthRole",
+      "StackName": "amplify-starmovie-dev-85458",
+      "StackId": "arn:aws:cloudformation:us-east-1:097895025316:stack/amplify-starmovie-dev-85458/8d8dc380-af61-11ed-ad6c-0e9837994473",
+      "AmplifyAppId": "d2uzykluqkdq25"
+    }
+  }
+}

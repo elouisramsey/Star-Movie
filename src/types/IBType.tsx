@@ -6,4 +6,5 @@ export interface IBProps {
   width?: string
   disabled?: boolean
   loading?: boolean
+  textStyles?: object
 }

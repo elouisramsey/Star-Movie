@@ -22,7 +22,8 @@ const Button = (props: IBProps) => {
     color = COLORS.white,
     width = '100%',
     disabled,
-    loading
+    loading,
+    textStyles
   } = props
 
   return (
@@ -40,6 +41,7 @@ const Button = (props: IBProps) => {
         style={{
           ...styles.text,
           marginLeft: loading ? pixelSizeHorizontal(20) : 0,
+          ...textStyles,
           color
         }}
       >
