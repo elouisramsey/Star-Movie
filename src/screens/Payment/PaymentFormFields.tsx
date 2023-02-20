@@ -36,9 +36,10 @@ const PaymentFormFields = ({
 
   const onSubmit = (data: any) => {
     setShowModal(true)
-    setStatus('error')
+    setStatus('success')
     setsubText('Movie booked successfully!')
   }
+
   return (
     <View
       style={{

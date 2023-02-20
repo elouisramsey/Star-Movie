@@ -1,8 +1,16 @@
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import useCreateUser, { confirmUser } from './hooks/useCreateUser'
 
-const useCustomForm = () => {
+const useCustomForm = ({
+  navigateTo,
+  setConfirmSignup
+}: {
+  setConfirmSignup: (val: boolean) => void
+  navigateTo?: any
+}) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const createUser = useCreateUser({ setConfirmSignup })
 
   const {
     control,
@@ -11,10 +19,22 @@ const useCustomForm = () => {
   } = useForm()
 
   const onSubmit = async (data: any) => {
-    setIsSubmitting(true)
-    console.log(data)
-    // Submit form data to server or do other things here
-    setIsSubmitting(false)
+    createUser.mutate(data)
+  }
+
+  const completeSignup = async ({
+    username,
+    authCode
+  }: {
+    username: string
+    authCode: string
+    navigateTo: any
+  }) => {
+    confirmUser({
+      username,
+      authCode,
+      navigateTo
+    })
   }
 
   return {
@@ -22,7 +42,8 @@ const useCustomForm = () => {
     errors,
     handleSubmit: handleSubmit(onSubmit),
     isSubmitting,
-    Controller
+    Controller,
+    completeSignup
   }
 }
 

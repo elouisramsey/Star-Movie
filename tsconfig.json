@@ -10,7 +10,8 @@
       "types/*": ["src/types/*"],
       "config/*": ["src/config/*"],
       "navigation/*": ["src/navigation/*"],
-      "context/*": ["src/context/*"]
+      "context/*": ["src/context/*"],
+      "graphql/*": ["src/graphql/*"]
     }
   },
   "extends": "expo/tsconfig.base",

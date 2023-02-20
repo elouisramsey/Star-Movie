@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import Button from 'components/Button/Button'
 import Input from 'components/TextInput/TextInput'
 import { ProfileStackParamList } from 'navigation/types'
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import SignupForm from './SignupForm'
 import { AuthStyles } from './styles'
@@ -15,11 +15,18 @@ type Props = {
 type SignupScreenProps = NativeStackScreenProps<ProfileStackParamList, 'Signup'>
 
 const Signup = ({ navigation }: SignupScreenProps) => {
-  const { errors } = useCustomForm()
+  const [confirmsignup, setConfirmSignup] = useState(false)
+  const { errors, completeSignup } = useCustomForm({ setConfirmSignup })
 
-  const [confirmsignup, setConfirmSignup] = React.useState(false)
   const [authCode, setAuthCode] = React.useState('')
   const [username, setUsername] = React.useState('')
+
+  const confirmCode = () =>
+    completeSignup({
+      username,
+      authCode,
+      navigateTo: () => navigation.navigate('Login')
+    })
 
   return (
     <View style={AuthStyles.container}>
@@ -49,19 +56,14 @@ const Signup = ({ navigation }: SignupScreenProps) => {
               Login
             </Text>
           </TouchableOpacity>
-          <Button
-            onPress={async () => {
-              try {
-                //   await Auth.confirmSignUp(username, authCode)
-              } catch (error) {
-                console.log(error)
-              }
-            }}
-            title='Signup'
-          />
+          <Button onPress={confirmCode} title='Signup' />
         </View>
       ) : (
-        <SignupForm navigation={navigation} setUsername={setUsername} />
+        <SignupForm
+          setConfirmSignup={setConfirmSignup}
+          navigation={navigation}
+          setUsername={setUsername}
+        />
       )}
     </View>
   )

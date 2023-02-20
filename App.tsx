@@ -1,5 +1,4 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { Amplify, Auth } from 'aws-amplify'
 import { COLORS } from 'config/COLORS'
 import { TicketProvider } from 'context/MovieContext'
 import { UserProvider } from 'context/user/UserContext'
@@ -11,10 +10,11 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import 'react-native-gesture-handler'
 import { QueryClient, QueryClientProvider } from 'react-query'
+
+import { Amplify } from 'aws-amplify'
 import config from './src/aws-exports'
 
 Amplify.configure(config)
-Auth.configure(config)
 
 const getFont = () =>
   Font.loadAsync({

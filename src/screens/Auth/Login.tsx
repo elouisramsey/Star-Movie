@@ -2,9 +2,12 @@ import { AntDesign, Entypo } from '@expo/vector-icons'
 import Button from 'components/Button/Button'
 import TextDisplay from 'components/TextDisplay/TextDisplay'
 import Input from 'components/TextInput/TextInput'
-import React, { useState } from 'react'
+import { useGeneralUserState } from 'context/user/UserContext'
+import React, { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { TouchableOpacity, View } from 'react-native'
+import { Credentials } from './hooks/types'
+import { useSubmit } from './hooks/useLogin'
 import { AuthStyles } from './styles'
 
 type Props = {
@@ -19,7 +22,9 @@ type LoginInfo = {
 
 const Login = ({ navigation, navigateTopage = false }: Props) => {
   const [loading, setLoading] = useState(false)
-  //   const dispatch = useAppDispatch()
+  const { mutate, status, error, data } = useSubmit()
+  const { state, dispatch } = useGeneralUserState()
+
   const {
     handleSubmit,
     control,
@@ -31,17 +36,27 @@ const Login = ({ navigation, navigateTopage = false }: Props) => {
     reValidateMode: 'onChange'
   })
 
-  // Louisezzimchidera ==> login username, @@88Abbaa ==> login password
+  // Password: '@@88Abba'
+  // Username: 'lui'
 
-  const onSubmit = ({
-    username,
-    password
-  }: {
-    username: string
-    password: string
-  }) => {
+  const handleLogin = (credentials: Credentials) => {
     setLoading(true)
+    mutate(credentials)
   }
+
+  useEffect(() => {
+    if (status === 'success') {
+      setLoading(false)
+      navigateTopage && navigation.navigate('Profile')
+      dispatch({
+        type: 'LOGIN',
+        payload: data.user
+      })
+    }
+    if (status === 'error') {
+      setLoading(false)
+    }
+  }, [status, error, navigateTopage, navigation])
 
   return (
     <View style={AuthStyles.container}>
@@ -113,7 +128,7 @@ const Login = ({ navigation, navigateTopage = false }: Props) => {
         </TouchableOpacity>
       </View>
       <Button
-        onPress={handleSubmit(onSubmit)}
+        onPress={handleSubmit(handleLogin)}
         title='Login'
         loading={loading}
       />

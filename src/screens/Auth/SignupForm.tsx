@@ -9,19 +9,18 @@ import useCustomForm from './useCustomForm'
 type Props = {
   navigation: any
   setUsername: (val: string) => void
+  setConfirmSignup: (val: boolean) => void
 }
 
-type SignupInfo = {
-  username: string
-  password: string
-  email: string
-  name: string
-  code?: string
-}
-
-const SignupForm = ({ navigation, setUsername }: Props) => {
-  const { control, errors, handleSubmit, isSubmitting, Controller } =
-    useCustomForm()
+const SignupForm = ({ navigation, setUsername, setConfirmSignup }: Props) => {
+  const {
+    control,
+    errors,
+    handleSubmit,
+    isSubmitting,
+    Controller,
+    completeSignup
+  } = useCustomForm({ setConfirmSignup })
 
   return (
     <>

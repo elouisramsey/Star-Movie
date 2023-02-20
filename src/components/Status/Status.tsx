@@ -1,5 +1,6 @@
 import { Feather, FontAwesome5 } from '@expo/vector-icons'
 import { COLORS } from 'config/COLORS'
+import { useGeneralTicketState } from 'context/SelectedMovie/TicketContext'
 import React from 'react'
 import { Modal, Text, TouchableOpacity, View } from 'react-native'
 import { statusStyles } from './style'
@@ -28,10 +29,8 @@ const Status = ({
   setShowModal,
   subText
 }: Props) => {
-  //   const dispatch = useAppDispatch()
-  //   const selectedInfo = useAppSelector((state) => state.cinema)
-  //   const { date, time, theatre, movieName, resolution, selectedSeat } =
-  // selectedInfo
+  const { dispatch } = useGeneralTicketState()
+
   return (
     <>
       <Modal transparent={true} animationType={'none'} visible={showModal}>
@@ -57,35 +56,15 @@ const Status = ({
               >
                 <View style={statusStyles.borderHack} />
               </View>
-              {/* <View style={statusStyles.rows}>
-                <View>
-                  <View>
-                    <Text style={statusStyles.header}>Theatre</Text>
-                    <Text style={statusStyles.text}>{theatre}</Text>
-                  </View>
-                  <View>
-                    <Text style={statusStyles.header}>Date</Text>
-                    <Text style={statusStyles.text}>{date}</Text>
-                  </View>
-                </View>
-                <View>
-                  <View>
-                    <Text style={statusStyles.header}>Seat</Text>
-                    <Text style={statusStyles.text}>{selectedSeat}</Text>
-                  </View>
-                  <View>
-                    <Text style={statusStyles.header}>Time</Text>
-                    <Text style={statusStyles.text}>{time}</Text>
-                  </View>
-                </View>
-              </View> */}
             </View>
             <TouchableOpacity
               style={statusStyles.cancel}
               onPress={() => {
                 setShowModal(false)
-                //   navigation.navigate('Home')
-                // dispatch(reset())
+                navigation.navigate('Home')
+                dispatch({
+                  type: 'reset'
+                })
                 // dispatch(resetTicket())
               }}
             >

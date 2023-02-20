@@ -13,7 +13,8 @@ module.exports = function (api) {
             config: './src/config',
             assets: './assets',
             navigation: './src/navigation',
-            context: './src/context'
+            context: './src/context',
+            graphql: './src/graphql'
           }
         }
       ],
