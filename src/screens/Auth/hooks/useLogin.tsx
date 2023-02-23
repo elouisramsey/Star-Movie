@@ -10,6 +10,8 @@ function submit(credentials: Credentials): Promise<SubmitResult> {
         query: getUser,
         variables: { id: user.attributes.sub }
       })
+
+      // @ts-ignore
       const data = response.data.getUser
       return { user: data }
     }

@@ -14,13 +14,11 @@ import { seatStyles } from 'screens/Tickets/Seats/styles'
 import { paymentStyles } from './styles'
 
 const PaymentFormFields = ({
-  setShowModal,
-  setStatus,
-  setsubText
+  createAndAssignTicket,
+  loading
 }: {
-  setShowModal: (val: boolean) => void
-  setStatus: (val: string) => void
-  setsubText: (val: string) => void
+  createAndAssignTicket: () => void
+  loading: boolean
 }) => {
   const { state } = useGeneralSeatState()
   const TotalPriceofExtras = totalPriceOfSelectedExtras(state.extras)
@@ -34,10 +32,8 @@ const PaymentFormFields = ({
     mode: 'onSubmit'
   })
 
-  const onSubmit = (data: any) => {
-    setShowModal(true)
-    setStatus('success')
-    setsubText('Movie booked successfully!')
+  const onSubmit = async () => {
+    createAndAssignTicket()
   }
 
   return (
@@ -174,7 +170,12 @@ const PaymentFormFields = ({
           </TextDisplay>
         </View>
         <View style={{ width: '45%' }}>
-          <Button title='Make Payment' onPress={handleSubmit(onSubmit)} />
+          <Button
+            title='Make Payment'
+            onPress={handleSubmit(onSubmit)}
+            disabled={loading}
+            loading={loading}
+          />
         </View>
       </View>
     </View>
