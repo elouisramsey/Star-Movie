@@ -6,8 +6,8 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2024-02-19T15:39:50.157Z",
-      "keyDescription": "movie api"
+      "apiKeyExpirationDate": "2024-03-04T08:52:55.192Z",
+      "keyDescription": "star movie"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "starmovie184b69c7_identitypool_184b69c7",
+    "identityPoolName": "starmovie3264856e_identitypool_3264856e",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "starmo184b69c7",
-    "userPoolName": "starmovie184b69c7_userpool_184b69c7",
+    "resourceNameTruncated": "starmo3264856e",
+    "userPoolName": "starmovie3264856e_userpool_3264856e",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "starmo184b69c7_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "starmo3264856e_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "184b69c7",
-    "resourceName": "starmovie184b69c7",
+    "sharedId": "3264856e",
+    "resourceName": "starmovie3264856e",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],
